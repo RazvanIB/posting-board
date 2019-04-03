@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import '../src/app/styles/colors.scss';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+$ionicons-font-path: "~ionicons/dist/fonts";
+@import "~ionicons/dist/scss/ionicons.scss";
+
+body {
+    background-color: $background-white;
+}

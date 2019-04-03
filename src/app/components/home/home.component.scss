@@ -1,0 +1,46 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+
+main {
+    @include flex_and_center;
+
+    .user--activity {
+        margin-left: 40px;
+        width: 960px;
+
+        .mat-expansion-panel-header {
+            color: $almost-white;
+            background-color: $green;
+            margin: 5px;
+        }
+
+        
+        .mat-expansion-panel {
+            color: $almost-white;
+            background-color: $dark-green;
+            margin: 5px;
+        }
+
+        
+        .content_container {
+            @include flex_and_center;
+            
+        img {
+            height: 25%;
+            width: 25%;
+            @include basic_border-radius;
+            padding: 5px;
+            margin: 10px 20px 0 0;
+        }
+        }
+
+        .expansion-panel__icon {
+            color: $almost-white;
+            background-color: $dark-green;
+            padding: 5px 10px 5px 10px;
+            margin-right: 10px;
+            border-radius: 25px;
+        }
+    }
+}

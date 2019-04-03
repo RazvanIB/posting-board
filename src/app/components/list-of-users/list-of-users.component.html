@@ -1,0 +1,14 @@
+<main>
+    <app-menu-card></app-menu-card>
+
+    <div class="list-of-users">
+      <div class="user-card" *ngFor="let user of users">
+        <img src="{{ user.image || json }}" />
+        <div class="user-info">
+            <p>{{ user.name || json }}</p>
+          
+            <p (click)="openDialog(1)">See his posts!</p>
+        </div>
+      </div>
+    </div>
+</main>

@@ -1,0 +1,13 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+
+.next__button {
+    width: 200px;
+    height: 30px;
+    
+    @include basic_border;
+    background-color: $dark-blue;
+    color: $white;
+    cursor: pointer;
+}

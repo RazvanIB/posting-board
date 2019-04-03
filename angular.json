@@ -136,5 +136,10 @@
       }
     }
   },
-  "defaultProject": "frontBranch"
+  "defaultProject": "frontBranch",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

@@ -1,0 +1,31 @@
+<main>
+      <app-menu-card></app-menu-card>
+
+      <div class="user--activity">
+        <p>Here you can witness your activity up until now:</p>
+              <mat-accordion>
+                  <mat-expansion-panel *ngFor="let post of posts">
+                    <mat-expansion-panel-header>
+                      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)">
+                          <i class="icon ion-md-trash"></i>
+                      </div>
+
+                      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)">
+                          <i class="icon ion-md-analytics"></i>
+                      </div>
+
+                      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)">
+                          <i class="icon ion-md-chatbubbles"></i>
+                      </div>
+                      {{ post.title | json }}
+                    </mat-expansion-panel-header>
+                    <ng-template matExpansionPanelContent>
+                      <div class="content_container">
+                          <img src="https://i.imgur.com/z6iTu7s.jpg" />
+                          {{ post.body | json }}
+                      </div>
+                      </ng-template>
+                  </mat-expansion-panel>
+                </mat-accordion>
+      </div>
+</main>

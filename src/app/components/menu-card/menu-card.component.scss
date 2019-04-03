@@ -1,0 +1,27 @@
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+
+.profile--card {
+    
+    margin: 20px 10px 0 10px;
+    padding-bottom: 10px;
+
+    background-color: $olive;
+
+    @include basic_border-radius;
+    width: 240px;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .options {
+        margin: 10px;
+
+        p {
+            cursor: pointer;
+        }
+    }
+}

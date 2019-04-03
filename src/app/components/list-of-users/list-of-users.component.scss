@@ -1,0 +1,50 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+
+main {
+    @include flex_and_center;
+
+    .list-of-users {
+        width: 1020px;
+        margin-top: 150px;
+        @include flex_and_center;
+        flex-wrap: wrap;
+        
+
+        .user-card {
+            img {
+                width: 250px;
+                height: 250px;
+                border-radius: 5px 5px 0 0;
+                border: 1px solid $green;
+            }
+
+            margin: 20px;
+
+            display: flex;
+            flex-direction: column;
+
+            .user-info {
+                background-color: $green;
+                color: $white;
+                @include flex_and_center;
+                flex-direction: column;
+                p {
+                    margin: 0 0 10px 0;
+
+                    &:first-child {
+                        margin-top: 15px;
+                    }
+
+                    &:last-child {
+                        &:hover {
+                            color: $black;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

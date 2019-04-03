@@ -1,0 +1,33 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/buttons.scss';
+
+.credentials {
+    @include flex_and_center;
+    flex-direction: column;
+
+    input {
+        width: 200px;
+        height: 30px;
+        @include basic_border;
+        @include basic_border-radius;
+    }
+
+    p {
+        margin: 10px 0 10px 0;
+    }
+
+    .next__button {
+        margin-top: 15px;
+    }
+
+    .options {
+        display: flex;
+        
+        p {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+    }
+}

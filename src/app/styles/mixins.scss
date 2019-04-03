@@ -1,0 +1,15 @@
+@import '../styles/colors.scss';
+
+@mixin basic_border {
+    border: .4px solid $black;
+}
+
+@mixin basic_border-radius {
+    border-radius: 5px;
+}
+
+@mixin flex_and_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
