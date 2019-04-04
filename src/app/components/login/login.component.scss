@@ -3,31 +3,27 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/buttons.scss';
 
-.credentials {
+main {
+
     @include flex_and_center;
-    flex-direction: column;
-
-    input {
-        width: 200px;
-        height: 30px;
-        @include basic_border;
-        @include basic_border-radius;
+    
+    form {
+        @include flex_and_center;
+        flex-direction: column;
     }
 
-    p {
-        margin: 10px 0 10px 0;
+    .mat-card {
+        width: 360px;
     }
 
-    .next__button {
-        margin-top: 15px;
+    .mat-card-actions {
+        @include flex_and_center;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
     }
 
-    .options {
-        display: flex;
-        
-        p {
-            margin-right: 10px;
-            cursor: pointer;
-        }
+    .mat-card-header {
+        @include flex_and_center;
     }
 }

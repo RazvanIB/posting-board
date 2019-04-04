@@ -11,7 +11,7 @@ import { IPost } from '../../models/post';
 })
 export class HomeComponent implements OnInit {
 
-  private posts : IPost[] = [];
+  public posts : IPost[] = [];
 
   constructor(private postsService: PostsService) { }
 

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IPost } from 'src/app/models/post';
 import { PostsService } from './../posts/posts.service';
 
-import { Observable } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -12,24 +12,16 @@ import { Observable } from 'rxjs';
 export class PopupService {
 
   userPosts: IPost[] = [];
+  private subject = new Subject<any>();
 
   constructor(private postsService: PostsService) { }
 
-  public setUserPosts(userId: number) {
-    this.postsService.getPostsByUserId(userId).subscribe(
-      (res: IPost[]) => {
-        this.userPosts = res;
-      }
-    )
-
-    console.log(this.userPosts)
+  getDataAsObservable() : Observable<any> {
+    return this.subject.asObservable();
+  }
+  
+  sendData(data) {
+    this.subject.next(data);
   }
 
-  public getUserPosts(): any {
-    const postsObservable = new Observable(observer => {
-        observer.next(this.userPosts);
-    });
-    
-    return postsObservable;
-  }
 }

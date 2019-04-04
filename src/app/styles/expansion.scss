@@ -1,0 +1,42 @@
+
+main {
+    @include flex_and_center;
+
+    .user--activity {
+        width: 960px;
+
+        .mat-expansion-panel-header {
+            color: $almost-white;
+            background-color: $green;
+            margin: 5px;
+        }
+
+        
+        .mat-expansion-panel {
+            color: $almost-white;
+            background-color: $dark-green;
+            margin: 5px;
+        }
+
+        
+        .content_container {
+            @include flex_and_center;
+            
+        img {
+            height: 25%;
+            width: 25%;
+            border-radius: 8px;
+            padding: 5px;
+            margin: 10px 20px 0 0;
+        }
+        }
+
+        .expansion-panel__icon {
+            color: $almost-white;
+            background-color: $dark-green;
+            padding: 5px 10px 5px 10px;
+            margin-right: 10px;
+            border-radius: 25px;
+        }
+    }
+}

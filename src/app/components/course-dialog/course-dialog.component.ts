@@ -1,6 +1,9 @@
 import { PopupService } from './../../services/popup/popup.service';
 import { Component, OnInit } from '@angular/core';
 import { IPost } from 'src/app/models/post';
+import { Subscription } from 'rxjs';
+import { PostsService } from 'src/app/services/posts/posts.service';
+import { typeWithParameters } from '@angular/compiler/src/render3/util';
 
 @Component({
   selector: 'app-course-dialog',
@@ -10,15 +13,19 @@ import { IPost } from 'src/app/models/post';
 export class CourseDialogComponent implements OnInit {
 
   userPostsToShow : IPost[] = [];
+  subscription: Subscription;
 
-  constructor(private popupService: PopupService) { }
+  constructor(private popupService: PopupService, private postsService : PostsService) {
+    this.subscription = this.popupService.getDataAsObservable().subscribe(response => {
+        this.userPostsToShow = response;
+    })    
+  }
 
   ngOnInit() {
-      const userPostsObservable = this.popupService.getUserPosts();
+  }
 
-      userPostsObservable.subscribe((postsData: IPost[]) => {
-        this.userPostsToShow = postsData;
-    });
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

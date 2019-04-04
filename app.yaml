@@ -1,0 +1,9 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+handlers:
+- url: /
+  static_files: dist/frontBranch/index.html
+  upload: dist/frontBranch/index.html
+- url: /
+  static_dir: dist/frontBranch

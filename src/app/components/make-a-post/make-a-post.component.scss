@@ -1,0 +1,15 @@
+@import "../../styles/mixins.scss";
+
+main {
+
+    @include flex_and_center;
+    
+    form {
+        @include flex_and_center;
+        flex-direction: column;
+    }
+
+    .mat-card {
+        width: 360px;
+    }
+}

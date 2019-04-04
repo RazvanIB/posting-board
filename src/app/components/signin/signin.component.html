@@ -1,28 +1,40 @@
-<div class="credentials">
-    <div>
-      <p>Username</p>
-      <input type="text" name="username" />
-    </div>
-  
-    <div>
-        <p>Password</p>
-        <input type="text" name="password" />
-    </div>
+<main>
 
-    <div>
-        <p>Confirm Password</p>
-        <input type="text" name="password" />
-    </div>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Sign up</mat-card-title>
+            </mat-card-header>
+            
+                <mat-card-content>
+                    <form>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Placeholder">
+                        </mat-form-field>
 
-    <div>
-        <p>Email</p>
-        <input type="text" name="password" />
-    </div>
-  
-    <button class="next__button">Sign in</button>
-  
-    <div class="options">
-        <p [routerLink]="['/passwordRecovery']">Forgot your password?</p>
-        <p [routerLink]="['/login']">Log in</p>
-    </div>
-  </div>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                                <mat-label>Confirm password</mat-label>
+                                <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'">
+                        </mat-form-field>
+                        
+                        <mat-form-field appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="Placeholder">
+                            </mat-form-field>
+                    </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button class="next__button">Sign up!</button>
+    
+                    <div class="options">
+                        <p [routerLink]="['/passwordRecovery']">Forgot your password?</p>
+                        <p [routerLink]="['/login']">Login</p>
+                    </div>
+                </mat-card-actions>
+            </mat-card>  
+    </main> 

@@ -3,11 +3,11 @@
 
     <div class="list-of-users">
       <div class="user-card" *ngFor="let user of users">
-        <img src="{{ user.image || json }}" />
+        <img src="{{user.image}}" />
         <div class="user-info">
             <p>{{ user.name || json }}</p>
           
-            <p (click)="openDialog(1)">See his posts!</p>
+            <p (click)="openDialog(user.userId)">See his posts!</p>
         </div>
       </div>
     </div>

@@ -5,6 +5,9 @@ import { UsersService } from './../../services/users/users.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CourseDialogComponent } from './../course-dialog/course-dialog.component';
 import { PopupService } from 'src/app/services/popup/popup.service';
+import { PostsService } from 'src/app/services/posts/posts.service';
+import { IPost } from './../../models/post';
+
 
 
 @Component({
@@ -14,11 +17,15 @@ import { PopupService } from 'src/app/services/popup/popup.service';
 })
 export class ListOfUsersComponent implements OnInit {
 
-  private users : IUser[] = [];
-  private userId: number;
+  public users: IUser[] = [];
   fileNameDialogRef: MatDialogRef<CourseDialogComponent>;
 
-  constructor(private usersService: UsersService, private popupService: PopupService, private dialog: MatDialog) { }
+  constructor(
+    private usersService: UsersService,
+    private popupService: PopupService,
+    private postsService: PostsService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.usersService.get_users().subscribe(
@@ -29,9 +36,14 @@ export class ListOfUsersComponent implements OnInit {
   }
 
   openDialog(userId) {
-    this.popupService.setUserPosts(userId)
+    this.postsService.getPostsByUserId(userId).subscribe(
+      (res: IPost[]) => {
+        this.popupService.sendData(res);
+        console.log(res);
+      }
+    )
     this.fileNameDialogRef = this.dialog.open(CourseDialogComponent, {
-      
+
     });
   }
 

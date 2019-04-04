@@ -1,3 +1,24 @@
-<div *ngFor="let post of userPostsToShow">
-  <p>{{ post.body || json }}</p>
-</div>
+<main>
+  <mat-dialog-content class="user--activity">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let post of userPostsToShow">
+        <mat-expansion-panel-header>
+          <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)">
+              <i class="icon ion-md-analytics"></i>
+          </div>
+  
+          <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)">
+              <i class="icon ion-md-chatbubbles"></i>
+          </div>
+          {{ post.title }}
+        </mat-expansion-panel-header>
+        <ng-template matExpansionPanelContent>
+          <div class="content_container">
+              <img src="https://i.imgur.com/z6iTu7s.jpg" />
+              {{ post.body }}
+          </div>
+        </ng-template>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-dialog-content>
+</main>
