@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.loginServce.checkForHash(hashedCredentials, this.username).subscribe(res => {
       if(res.status === 200) {
-        console.log(res.status);
+        sessionStorage.setItem('token', res.body['token']);
         this.router.navigate(["/home"]);
       } else if (res.status === 401 ) {
         console.log(res.status);
@@ -48,9 +48,7 @@ export class LoginComponent implements OnInit {
         console.log(res.status);
         alert("Something went wrong. Please try again!");
       }
-    
+      
     })
-    
-    
   }
 }

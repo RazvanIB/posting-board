@@ -16,10 +16,9 @@ export class HomeComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   ngOnInit() {
-    this.postsService.getPostsByUserId(2).subscribe(
+    this.postsService.get_posts().subscribe(
       (res: IPost[]) => {
-        console.log(res);
-        this.posts = res;
+        this.posts = res["posts"];
       }
     )
   }
@@ -27,7 +26,13 @@ export class HomeComponent implements OnInit {
   public deletePost(id): void {
     this.posts.forEach(element => {
       if(element.id == id) {
-        this.posts.splice(this.posts.indexOf(element), 1);
+        this.postsService.deletePostByPostId(element.id).subscribe(res => {
+          if(res.status == 200) {
+            this.posts.splice(this.posts.indexOf(element), 1);
+          } else {
+            console.log(res.status);
+          }
+        });
       }
     });
   }

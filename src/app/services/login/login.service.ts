@@ -6,11 +6,21 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
 
-  baseURL: string = "https://cloud-homework-3-backend.appspot.com/users/login";
+  public headers: any = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('backend-api-key', localStorage.getItem('apiKey'));
+
+  public tokenHeaders: any = new HttpHeaders()
+    .set('Content-Type', 'application/json')
+    .set('backend-api-key', localStorage.getItem('apiKey'))
+    .set('token', sessionStorage.getItem('token'));
+
+    public tokenFormDataHeaders: any = new HttpHeaders()
+    .set('Content-Type', 'multipart/form-data')
+    .set('backend-api-key', localStorage.getItem('apiKey'))
+    .set('token', sessionStorage.getItem('token'));
 
   constructor(private httpClient: HttpClient) { }
-
-
 
   checkForHash(hashed, username) {
 
@@ -19,16 +29,13 @@ export class LoginService {
       "password": hashed
     }
 
-    console.log(JSON.stringify(hashObj));
+    sessionStorage.setItem('username', username);
+    localStorage.setItem('apiKey', "Tc9kpo1pAl1zzi1cfTknQ0aiW2LTckTMdeGAORSasl3cEzQvMe");
+    localStorage.setItem('baseURL', "https://cloud-homework-3-backend.appspot.com");
 
-    let headers = new HttpHeaders();
-    
-    headers.append('Content-Type', 'application/json');
-    headers.append('backend-api-key', "Tc9kpo1pAl1zzi1cfTknQ0aiW2LTckTMdeGAORSasl3cEzQvMe"); 
-
-    return this.httpClient.post(this.baseURL, JSON.stringify(hashObj), {
+    return this.httpClient.post(localStorage.getItem('baseURL') + "/users/login", JSON.stringify(hashObj), {
       observe: 'response',
-      headers: headers
+      headers: this.headers
     });
   }
 }
