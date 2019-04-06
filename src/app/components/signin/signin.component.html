@@ -9,27 +9,27 @@
                     <form>
                         <mat-form-field appearance="outline">
                             <mat-label>Username</mat-label>
-                            <input matInput placeholder="Placeholder">
+                            <input matInput placeholder="Placeholder" [(ngModel)]="username" name="username" required>
                         </mat-form-field>
 
                         <mat-form-field appearance="outline">
                             <mat-label>Password</mat-label>
-                            <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'">
+                            <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'" [(ngModel)]="password" name="password" required>
                         </mat-form-field>
 
                         <mat-form-field appearance="outline">
                                 <mat-label>Confirm password</mat-label>
-                                <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'">
+                                <input matInput placeholder="Placeholder" [type]="hide ? 'password' : 'text'" [(ngModel)]="confirmPassword" name="confirmPassword" required>
                         </mat-form-field>
                         
                         <mat-form-field appearance="outline">
                                 <mat-label>Email</mat-label>
-                                <input matInput placeholder="Placeholder">
+                                <input matInput placeholder="Placeholder" [(ngModel)]="email" name="email" required>
                             </mat-form-field>
                     </form>
                 </mat-card-content>
                 <mat-card-actions>
-                    <button class="next__button">Sign up!</button>
+                    <button class="next__button" (click)="signup()">Sign up!</button>
     
                     <div class="options">
                         <p [routerLink]="['/passwordRecovery']">Forgot your password?</p>

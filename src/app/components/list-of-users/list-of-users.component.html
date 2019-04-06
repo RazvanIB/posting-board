@@ -3,9 +3,9 @@
 
     <div class="list-of-users">
       <div class="user-card" *ngFor="let user of users">
-        <img src="{{user.image}}" />
+        <img src="{{ user.avatar }}" />
         <div class="user-info">
-            <p>{{ user.name}}</p>
+            <p>{{ user.username }}</p>
           
             <p (click)="openDialog(user.userId)">See his posts!</p>
         </div>

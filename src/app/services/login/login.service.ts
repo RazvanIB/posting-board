@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { IUser } from 'src/app/models/user';
+import { headersToString } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,8 @@ export class LoginService {
     .set('backend-api-key', localStorage.getItem('apiKey'))
     .set('token', sessionStorage.getItem('token'));
 
-    public tokenFormDataHeaders: any = new HttpHeaders()
-    .set('Content-Type', 'multipart/form-data')
+  public tokenFormDataHeaders: any = new HttpHeaders()
+    // .set('Content-Type', 'multipart/form-data')
     .set('backend-api-key', localStorage.getItem('apiKey'))
     .set('token', sessionStorage.getItem('token'));
 
@@ -37,5 +39,12 @@ export class LoginService {
       observe: 'response',
       headers: this.headers
     });
+  }
+
+  registerNewUser(user: any) {
+    return this.httpClient.post(localStorage.getItem('baseURL') + '/users/register', JSON.stringify(user), {
+      observe: 'response',
+      headers: this.headers
+    }) 
   }
 }

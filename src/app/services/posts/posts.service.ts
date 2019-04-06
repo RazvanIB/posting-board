@@ -1,6 +1,7 @@
 import { LoginService } from './../login/login.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { post } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,29 @@ export class PostsService {
         headers: this.loginService.tokenFormDataHeaders
       }
     )
+  }
+
+  getPostTranslation(selected: string, postId: number) {
+    return this.httpClient.get(localStorage.getItem('baseURL') + "/users/" + sessionStorage.getItem('username') + "/posts/" +
+    postId + "/translate?lang=" + selected, {
+      observe: "response",
+      headers: this.loginService.tokenHeaders
+    })
+  }
+
+  getImageLocation(postId: number, zoom: number, imageWidth: number, imageHeight: number) {
+    return this.httpClient.get(localStorage.getItem('baseURL') + '/users/' + sessionStorage.getItem('username') + '/posts/' +
+    postId + '/locate?zoom=' + zoom + '&width=' + imageWidth + '&height=' + imageHeight, {
+      observe: "response",
+      headers: this.loginService.tokenHeaders
+    })
+  }
+
+  getPostAnalysis(postId: number) {
+    return this.httpClient.get(localStorage.getItem('baseURL') + '/users/' + sessionStorage.getItem('username') + '/posts/' +
+    postId + '/analyze', {
+      observe: "response",
+      headers: this.loginService.tokenHeaders
+    })
   }
 }

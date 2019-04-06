@@ -18,6 +18,7 @@ import { IPost } from './../../models/post';
 export class ListOfUsersComponent implements OnInit {
 
   public users: IUser[] = [];
+  public stockAvatar: string = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
   fileNameDialogRef: MatDialogRef<CourseDialogComponent>;
 
   constructor(
@@ -29,8 +30,17 @@ export class ListOfUsersComponent implements OnInit {
 
   ngOnInit() {
     this.usersService.get_users().subscribe(
-      (res: IUser[]) => {
-        this.users = res;
+      (res) => {
+        this.users = res.body["users"];
+        this.users.forEach(user => {
+          if(user.avatar.length === 0) {
+            user.avatar = this.stockAvatar;
+          }
+
+          if(user.username === sessionStorage.getItem('username')) {
+            this.users.splice(this.users.indexOf(user), 1);
+          }
+        })
       }
     )
   }

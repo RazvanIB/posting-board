@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PasswordRecoveryService } from 'src/app/services/passwordRecovery/password-recovery.service';
 
 @Component({
   selector: 'app-password-recovery',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PasswordRecoveryComponent implements OnInit {
 
-  constructor() { }
+  public username: string;
+  public email: string;
+
+  constructor(private passwordRecoveryService: PasswordRecoveryService) { }
 
   ngOnInit() {
+  }
+
+  recoverPassword() {
+    let recoveryCredentials = {
+      "username": this.username,
+      "mail": this.email
+    }
+
+    this.passwordRecoveryService.postRecoveryRequest(recoveryCredentials).subscribe(res => {
+      console.log(res.status);
+    })
   }
 
 }

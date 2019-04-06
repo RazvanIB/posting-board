@@ -20,14 +20,18 @@ export class MakeAPostComponent implements OnInit {
   }
 
   onUpload() {
-    const fd = new FormData();
-    fd.append('title', this.title);
-    fd.append('description', this.description);
-    fd.append('image', this.selectedFile, this.selectedFile.name);
+    if(this.title === null || this.selectedFile === null) {
+      alert("Invalid form! Please complete all required fields!");
+    } else {
+      const fd = new FormData();
+      fd.append('title', this.title);
+      fd.append('description', this.description);
+      fd.append('image', this.selectedFile, this.selectedFile.name);
 
-    this.postsService.createNewPost(fd).subscribe(res => {
-      console.log(res.status);
+      this.postsService.createNewPost(fd).subscribe(res => {
+        console.log(res.status);
     });
+    }
   }
 
   ngOnInit() {
