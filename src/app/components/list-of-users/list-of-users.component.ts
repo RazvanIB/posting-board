@@ -45,8 +45,8 @@ export class ListOfUsersComponent implements OnInit {
     )
   }
 
-  openDialog(userId) {
-    this.postsService.getPostsByUserId(userId).subscribe(
+  openDialog(username) {
+    this.postsService.getPostsByUsername(username).subscribe(
       (res: IPost[]) => {
         this.popupService.sendData(res);
         console.log(res);

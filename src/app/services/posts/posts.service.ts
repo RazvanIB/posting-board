@@ -16,8 +16,10 @@ export class PostsService {
     });
   }
 
-  getPostsByUserId(id: number) {
-    return this.httpClient.get(localStorage.getItem('baseURL') + '/posts?userId=' + `${id}`);
+  getPostsByUsername(username: number) {
+    return this.httpClient.get(localStorage.getItem('baseURL') + '/users/' + `${username}` + '/posts', {
+      headers: this.loginService.headers
+    });
   }
 
   deletePostByPostId(id: number) {

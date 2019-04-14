@@ -1,26 +1,27 @@
 <main>
-  <app-menu-card></app-menu-card>
-
   <mat-card>
-    <mat-card-header>
-        <mat-card-title>Make a post!</mat-card-title>
-    </mat-card-header>
+      <mat-card-header>
+          <h3>Make a post!</h3>
+      </mat-card-header>
     
         <mat-card-content>
           <form>
             <mat-form-field class="example-full-width">
-              <input matInput placeholder="Title" name="title" [(ngModel)]="title" required>
+              <input matInput placeholder="Title" name="title" size="10" [(ngModel)]="title" required>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
               <textarea matInput placeholder="Description" name="description" [(ngModel)]="description"></textarea>
             </mat-form-field>
             
-            <input type="file" (change)="onFileSelected($event)" required>
+            <div class="action-buttons">
+                Upload an image: <input type="file" (change)="onFileSelected($event)" required>
+                <mat-card-actions>
+                  <button mat-button (click)="onUpload()">Post your thoughts!</button>
+                </mat-card-actions>
+                
+            </div>
           </form>
         </mat-card-content>
-        <mat-card-actions>
-          <button mat-button (click)="onUpload()">Upload</button>
-        </mat-card-actions>
     </mat-card>
 </main>

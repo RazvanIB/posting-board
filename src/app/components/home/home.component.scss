@@ -2,3 +2,30 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/fonts.scss';
 @import '../../styles/expansion.scss';
+
+main {
+
+    display: flex;
+    align-items: flex-start;
+
+    .left-side__content {
+        
+        width: 960px;
+        background-color: $almost-white;
+        min-height: 400px;
+        @include basic_border_radius;
+        
+        p {
+            padding: 15px;
+        }
+    }
+    
+    h3 {
+        padding: 30px 30px 10px 30px;
+        @include h3-weight;
+    }
+
+    .menu-card--container {
+        margin-top: 15px;
+    }
+}

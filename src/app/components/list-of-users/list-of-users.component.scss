@@ -7,17 +7,19 @@ main {
 
     .list-of-users {
         width: 1020px;
-        margin-top: 150px;
         @include flex_and_center;
         flex-wrap: wrap;
         
 
         .user-card {
+
+            border-radius: 0 0 5px 5px;
+
             img {
                 width: 250px;
-                height: 250px;
+                height: 320px;
                 border-radius: 5px 5px 0 0;
-                border: 1px solid $green;
+                border: 1px solid $dark-burgundy;
             }
 
             margin: 20px;
@@ -26,7 +28,8 @@ main {
             flex-direction: column;
 
             .user-info {
-                background-color: $green;
+                background-color: $burgundy;
+                border-radius: 0 0 5px 5px;
                 color: $white;
                 @include flex_and_center;
                 flex-direction: column;

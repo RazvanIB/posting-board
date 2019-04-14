@@ -14,6 +14,12 @@ export class HomeComponent implements OnInit {
 
   public posts : IPost[] = [];
   public analyzedPosts: number[] = [];
+  
+  public translatedPost: any;
+  public selected: any;
+  public locationLink: string;
+  public analysis: any;
+  public showPosts: boolean;
 
   languages: ILanguage[] = [
     {value: 'RO', viewValue: 'Romanian'},
@@ -30,17 +36,18 @@ export class HomeComponent implements OnInit {
     {value: 'RU', viewValue: 'Russian'},
     {value: 'ES', viewValue: 'Spanish'},
   ]
-  public translatedPost: any;
-  public selected: any;
-  public locationLink: string;
-  public analysis: any;
 
   constructor(private postsService: PostsService) { }
 
   ngOnInit() {
     this.postsService.get_posts().subscribe(
       (res: IPost[]) => {
-        this.posts = res["posts"];
+        if(res) {
+          this.posts = res['posts'];
+          this.showPosts = true;
+        }  else {
+          this.showPosts = false;
+        }
       }
     )
   }

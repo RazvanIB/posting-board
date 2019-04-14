@@ -1,15 +1,36 @@
 @import "../../styles/mixins.scss";
+@import "../../styles/colors.scss";
 
 main {
 
     @include flex_and_center;
+
+    h3 {
+        @include h3-weight;
+    }
     
     form {
         @include flex_and_center;
+        @include basic_border-radius;
         flex-direction: column;
+        background-color: $almost-white;
     }
 
     .mat-card {
-        width: 360px;
+        width: 960px;
+        padding: 10px 0 0 0;
+        margin-bottom: 100px;
+        height: 180px;
     }
+
+    margin: 35px 0 0 0;
+}
+
+.example-full-width {
+    width: 800px;
+}
+
+
+.mat-form-field-wrapper {
+    width: 700px !important;
 }

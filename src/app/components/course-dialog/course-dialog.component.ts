@@ -17,8 +17,11 @@ export class CourseDialogComponent implements OnInit {
 
   constructor(private popupService: PopupService, private postsService : PostsService) {
     this.subscription = this.popupService.getDataAsObservable().subscribe(response => {
-        this.userPostsToShow = response;
-    })    
+        this.userPostsToShow = Object.keys(response).map(function(index) {
+          let items = response[index];
+          return items;
+        })
+    })     
   }
 
   ngOnInit() {

@@ -11,7 +11,6 @@ import { Subject, Observable } from 'rxjs';
 })
 export class PopupService {
 
-  userPosts: IPost[] = [];
   private subject = new Subject<any>();
 
   constructor(private postsService: PostsService) { }

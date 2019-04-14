@@ -8,6 +8,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -50,7 +51,8 @@ import { PostsService } from './services/posts/posts.service';
     MatRadioModule,
     MatSelectModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule
   ],
   providers: [EncrDecrService, PostsService],
   bootstrap: [AppComponent],

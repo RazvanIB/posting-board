@@ -1,48 +1,60 @@
 <main>
-      <app-menu-card></app-menu-card>
+    <div class="menu-card--container">
+        <app-menu-card></app-menu-card>
+    </div>
 
-      <div class="user--activity">
-        <p>Here you can witness your activity up until now:</p>
-              <mat-accordion>
-                  <mat-expansion-panel *ngFor="let post of posts">
-                    <mat-expansion-panel-header>
-                      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)">
-                          <i class="icon ion-md-trash"></i>
-                      </div>
-                      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); locate(post.id)">
-                          <i class="icon ion-md-compass"></i>
-                      </div>
-                      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); translate(post.id)">
-                        
-                          <i class="icon ion-md-chatbubbles"></i>
-                      </div>
-                      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); analyze(post.id)">
-                          <i class="icon ion-md-analytics"></i>
-                      </div>
-                      {{ post.title }}
-                    </mat-expansion-panel-header>
-                    <ng-template matExpansionPanelContent>
-                      <div class="content_container">
-                          <mat-form-field>
-                              <mat-select [(ngModel)]="selected">
-                                  <mat-option *ngFor="let language of languages" [value]="language.value">
-                                      {{language.viewValue}}
-                                    </mat-option>
-                              </mat-select>
-                            </mat-form-field>
-                          <img src={{post.link}} />
-                          {{ post.description }}
-                      </div>
-
-                      <div *ngIf="showAnalysis(post.id)">
-                        <p>ANALYSIS IS AS FOLLOWING:</p>
-                        <p>TITLE: {{ analysis.title }}</p>
-                        <p>DESCRIPTION: {{ analysis.description }}</p>
-                        <p>IMAGE ANALYSIS - POSSIBLE LANDMARKS: - {{ analysis.image.landmarks }}</p>
-
-                      </div>
-                    </ng-template>
-                  </mat-expansion-panel>
-                </mat-accordion>
+      <div class="content--container">
+        <app-make-a-post></app-make-a-post>
+        <div class="left-side__content" class="user--activity left-side__content" *ngIf="showPosts; else noPostsDiv">
+            <h3>Your posts:</h3>
+                  <mat-accordion>
+                      <mat-expansion-panel *ngFor="let post of posts">
+                        <mat-expansion-panel-header>
+                          <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)">
+                              <i class="icon ion-md-trash"></i>
+                          </div>
+                          <div class="expansion-panel__icon" (click)="$event.stopPropagation(); locate(post.id)">
+                              <i class="icon ion-md-compass"></i>
+                          </div>
+                          <div class="expansion-panel__icon" (click)="$event.stopPropagation(); translate(post.id)">
+                            
+                              <i class="icon ion-md-chatbubbles"></i>
+                          </div>
+                          <div class="expansion-panel__icon" (click)="$event.stopPropagation(); analyze(post.id)">
+                              <i class="icon ion-md-analytics"></i>
+                          </div>
+                          {{ post.title }}
+                        </mat-expansion-panel-header>
+                        <ng-template matExpansionPanelContent>
+                          <div class="content_container">
+                              <mat-form-field>
+                                  <mat-select [(ngModel)]="selected">
+                                      <mat-option *ngFor="let language of languages" [value]="language.value">
+                                          {{language.viewValue}}
+                                        </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              <img src={{post.link}} />
+                              {{ post.description }}
+                          </div>
+    
+                          <div *ngIf="showAnalysis(post.id)">
+                            <p>ANALYSIS IS AS FOLLOWING:</p>
+                            <p>TITLE: {{ analysis.title }}</p>
+                            <p>DESCRIPTION: {{ analysis.description }}</p>
+                            <p>IMAGE ANALYSIS - POSSIBLE LANDMARKS: - {{ analysis.image.landmarks }}</p>
+    
+                          </div>
+                        </ng-template>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+          </div>
+    
+          <ng-template #noPostsDiv>
+            <div class="left-side__content">
+                <h3>It looks like you have no posts right now. Try writing some!</h3>
+            </div>
+          </ng-template>
       </div>
+      
 </main>
