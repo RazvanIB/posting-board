@@ -1,31 +1,3 @@
 @import '../app/styles/colors.scss';
 @import '../app/styles/fonts.scss';
 @import '../app/styles/mixins.scss';
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-
-    #navbar-title {
-        font-family: 'Cute Font';
-        font-size: 35px;
-    }
-
-    button {
-        font-size: 20px;
-    }
-
-    span {
-        padding-right: 1rem;
-    }
-
-    .navbar--options {
-        @include flex_and_center;
-    }
-}
-
-.mat-toolbar-single-row {
-    background-color: $almost-white;
-    @include basic_border-radius;
-}

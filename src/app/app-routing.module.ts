@@ -7,15 +7,16 @@ import { HomeComponent } from './components/home/home.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { LoginComponent } from './components/login/login.component';
 import { PasswordRecoveryComponent } from './components/password-recovery/password-recovery.component';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'signin', component: SigninComponent},
   {path: 'passwordRecovery', component: PasswordRecoveryComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'list-of-users', component: ListOfUsersComponent},
-  {path: 'make-a-post', component: MakeAPostComponent}
+  {path: 'home', component: HomeComponent, canActivate: [UserGuard]},
+  {path: 'list-of-users', component: ListOfUsersComponent, canActivate: [UserGuard]},
+  {path: 'make-a-post', component: MakeAPostComponent, canActivate: [UserGuard]}
 ];
 
 @NgModule({

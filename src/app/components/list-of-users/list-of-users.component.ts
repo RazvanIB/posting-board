@@ -7,6 +7,7 @@ import { CourseDialogComponent } from './../course-dialog/course-dialog.componen
 import { PopupService } from 'src/app/services/popup/popup.service';
 import { PostsService } from 'src/app/services/posts/posts.service';
 import { IPost } from './../../models/post';
+import { NavbarService } from 'src/app/services/navbar/navbar.service';
 
 
 
@@ -25,8 +26,11 @@ export class ListOfUsersComponent implements OnInit {
     private usersService: UsersService,
     private popupService: PopupService,
     private postsService: PostsService,
+    private navbarService: NavbarService,
     private dialog: MatDialog
-  ) { }
+  ) { 
+    this.navbarService.show();
+  }
 
   ngOnInit() {
     this.usersService.get_users().subscribe(
@@ -46,6 +50,7 @@ export class ListOfUsersComponent implements OnInit {
   }
 
   openDialog(username) {
+    sessionStorage.setItem("username_requested", username);
     this.postsService.getPostsByUsername(username).subscribe(
       (res: IPost[]) => {
         this.popupService.sendData(res);

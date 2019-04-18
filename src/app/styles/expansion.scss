@@ -1,15 +1,7 @@
+@import '../styles/mixins.scss';
 
-main {
-    @include flex_and_center;
 
-    .user--activity {
-        width: 960px;
-
-        .mat-expansion-panel-header {
-            color: $almost-white;
-            background-color: $burgundy;
-            margin: 5px;
-        }
+        
 
         
         .mat-expansion-panel {
@@ -18,17 +10,23 @@ main {
             margin: 5px;
         }
 
+        .mat-expansion-panel-header {
+            color: $almost-white;
+            background-color: $burgundy !important;
+            margin: 5px;
+
+        }
         
         .content_container {
             @include flex_and_center;
             
-        img {
-            height: 25%;
-            width: 25%;
-            border-radius: 8px;
-            padding: 5px;
-            margin: 10px 20px 0 0;
-        }
+            img {
+                height: 25%;
+                width: 25%;
+                border-radius: 8px;
+                padding: 5px;
+                margin: 10px 20px 0 0;
+            }
         }
 
         .expansion-panel__icon {
@@ -38,5 +36,3 @@ main {
             margin-right: 10px;
             border-radius: 25px;
         }
-    }
-}

@@ -1,3 +1,4 @@
+import { NavbarService } from 'src/app/services/navbar/navbar.service';
 import { Component, OnInit } from '@angular/core';
 import { IUser } from 'src/app/models/user';
 import { EncrDecrService } from 'src/app/services/EncrDecr/encr-decr.service';
@@ -34,7 +35,11 @@ export class SigninComponent implements OnInit {
     }
   }
 
-  constructor(private encrDecrService: EncrDecrService, private loginService: LoginService) { }
+  constructor(private encrDecrService: EncrDecrService, 
+    private loginService: LoginService,
+    private navbarService: NavbarService) { 
+      this.navbarService.hide();
+    }
 
   ngOnInit() {
     this.hide = true;

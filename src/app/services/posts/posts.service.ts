@@ -8,6 +8,8 @@ import { post } from 'selenium-webdriver/http';
 })
 export class PostsService {
 
+  public current_username: string;
+
   constructor(private httpClient: HttpClient, private loginService: LoginService) { }
 
   get_posts() {
@@ -47,8 +49,12 @@ export class PostsService {
     )
   }
 
+  setCurrentUsername(new_username: string) {
+    this.current_username = new_username;
+  }
+
   getPostTranslation(selected: string, postId: number) {
-    return this.httpClient.get(localStorage.getItem('baseURL') + "/users/" + sessionStorage.getItem('username') + "/posts/" +
+    return this.httpClient.get(localStorage.getItem('baseURL') + "/users/" + sessionStorage.getItem("username_requested") + "/posts/" +
     postId + "/translate?lang=" + selected, {
       observe: "response",
       headers: this.loginService.tokenHeaders
@@ -56,7 +62,7 @@ export class PostsService {
   }
 
   getImageLocation(postId: number, zoom: number, imageWidth: number, imageHeight: number) {
-    return this.httpClient.get(localStorage.getItem('baseURL') + '/users/' + sessionStorage.getItem('username') + '/posts/' +
+    return this.httpClient.get(localStorage.getItem('baseURL') + '/users/' + sessionStorage.getItem('username_requested') + '/posts/' +
     postId + '/locate?zoom=' + zoom + '&width=' + imageWidth + '&height=' + imageHeight, {
       observe: "response",
       headers: this.loginService.tokenHeaders
@@ -64,7 +70,7 @@ export class PostsService {
   }
 
   getPostAnalysis(postId: number) {
-    return this.httpClient.get(localStorage.getItem('baseURL') + '/users/' + sessionStorage.getItem('username') + '/posts/' +
+    return this.httpClient.get(localStorage.getItem('baseURL') + '/users/' + sessionStorage.getItem('username_requested') + '/posts/' +
     postId + '/analyze', {
       observe: "response",
       headers: this.loginService.tokenHeaders

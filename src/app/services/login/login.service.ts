@@ -32,6 +32,7 @@ export class LoginService {
     }
 
     sessionStorage.setItem('username', username);
+    sessionStorage.setItem('username_requested', username);
     localStorage.setItem('apiKey', "Tc9kpo1pAl1zzi1cfTknQ0aiW2LTckTMdeGAORSasl3cEzQvMe");
     localStorage.setItem('baseURL', "https://cloud-homework-3-backend.appspot.com");
 

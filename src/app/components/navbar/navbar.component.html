@@ -1,0 +1,7 @@
+<mat-toolbar class="navbar" *ngIf="navbarService.visible">
+    <span id="navbar-title">Social Cloud</span>
+    <div class="navbar--options">   
+        <button mat-button [routerLink]="['/home']">Home</button>    
+        <button mat-button [routerLink]="['/list-of-users']">View other users</button>
+    </div>
+</mat-toolbar>

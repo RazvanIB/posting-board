@@ -22,6 +22,8 @@ import { MakeAPostComponent } from './components/make-a-post/make-a-post.compone
 
 import { EncrDecrService } from './services/EncrDecr/encr-decr.service';
 import { PostsService } from './services/posts/posts.service';
+import { PostComponent } from './components/post/post.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { PostsService } from './services/posts/posts.service';
     ListOfUsersComponent,
     MenuCardComponent,
     CourseDialogComponent,
-    MakeAPostComponent
+    MakeAPostComponent,
+    PostComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

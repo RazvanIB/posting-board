@@ -2,6 +2,7 @@ import { LoginService } from './../../services/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { EncrDecrService } from 'src/app/services/EncrDecr/encr-decr.service';
 import { Router } from '@angular/router';
+import { NavbarService } from 'src/app/services/navbar/navbar.service';
 
 
 @Component({
@@ -20,7 +21,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private encrDecrService: EncrDecrService, 
     private loginServce: LoginService,
-    private router: Router) { }
+    private navbarService: NavbarService,
+    private router: Router) {
+      this.navbarService.hide();
+    }
 
   ngOnInit() {
     this.hide = true;

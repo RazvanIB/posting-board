@@ -1,12 +1,17 @@
 @import '../../styles/colors.scss';
 @import '../../styles/mixins.scss';
 @import '../../styles/fonts.scss';
-@import '../../styles/expansion.scss';
 
 main {
 
     display: flex;
     align-items: flex-start;
+    justify-content: center;
+
+    
+    .user--activity {
+        width: 960px;
+    }
 
     .left-side__content {
         

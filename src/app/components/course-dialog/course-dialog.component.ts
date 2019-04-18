@@ -13,14 +13,10 @@ import { typeWithParameters } from '@angular/compiler/src/render3/util';
 export class CourseDialogComponent implements OnInit {
 
   userPostsToShow : IPost[] = [];
-  subscription: Subscription;
 
-  constructor(private popupService: PopupService, private postsService : PostsService) {
-    this.subscription = this.popupService.getDataAsObservable().subscribe(response => {
-        this.userPostsToShow = Object.keys(response).map(function(index) {
-          let items = response[index];
-          return items;
-        })
+  constructor(private popupService: PopupService) {
+    this.popupService.getDataAsObservable().subscribe(response => {
+        this.userPostsToShow = response['posts'];
     })     
   }
 
@@ -28,7 +24,6 @@ export class CourseDialogComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 
 }

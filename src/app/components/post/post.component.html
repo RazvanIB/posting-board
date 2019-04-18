@@ -1,0 +1,39 @@
+<mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)" *ngIf="showDeleteButton">
+          <i class="icon ion-md-trash"></i>
+      </div>
+      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); locate(post.id)">
+          <i class="icon ion-md-compass"></i>
+      </div>
+      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); translate(post.id)">
+        
+          <i class="icon ion-md-chatbubbles"></i>
+      </div>
+      <div class="expansion-panel__icon" (click)="$event.stopPropagation(); analyze(post.id)">
+          <i class="icon ion-md-analytics"></i>
+      </div>
+      {{ post.title }}
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+      <div class="content_container">
+          <mat-form-field>
+              <mat-select [(ngModel)]="selected">
+                  <mat-option *ngFor="let language of languages" [value]="language.value">
+                      {{language.viewValue}}
+                    </mat-option>
+              </mat-select>
+            </mat-form-field>
+          <img src={{post.link}} />
+          {{ post.description }}
+      </div>
+
+      <div *ngIf="showAnalysis">
+        <p>ANALYSIS IS AS FOLLOWING:</p>
+        <p>TITLE: {{ analysis.title }}</p>
+        <p>DESCRIPTION: {{ analysis.description }}</p>
+        <p>IMAGE ANALYSIS - POSSIBLE LANDMARKS: - {{ analysis.image.landmarks }}</p>
+
+      </div>
+    </ng-template>
+  </mat-expansion-panel>
