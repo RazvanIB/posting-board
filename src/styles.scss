@@ -5,4 +5,15 @@ $ionicons-font-path: "~ionicons/dist/fonts";
 
 body {
     background-image: url("https://cdn.inspirationhut.net/wp-content/uploads/2013/05/111.png");
+
+    .center-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 180px;
+    }
+
+    .center-signin-form {
+        margin-top: 120px;
+    }
 }
