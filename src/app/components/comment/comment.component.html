@@ -1,0 +1,7 @@
+<div class="comment" *ngFor="let comment of comments" (click)="logCom(comment)">
+  <div class="comment-first-row">
+      <h4 class="username">{{ comment.author }}</h4>
+      <i class="icon ion-md-trash" *ngIf="showDeleteButton" (click)="deleteComment(comment)"></i>
+  </div>
+  <p class="message">{{ comment.description }}</p>
+</div>

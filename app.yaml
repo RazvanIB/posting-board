@@ -1,9 +1,36 @@
 runtime: python27
 api_version: 1
 threadsafe: true
+
 handlers:
 - url: /
   static_files: dist/frontBranch/index.html
   upload: dist/frontBranch/index.html
-- url: /
-  static_dir: dist/frontBranch
+
+- url: /login
+  static_files: dist/frontBranch/index.html
+  upload: dist/frontBranch/index.html
+
+- url: /signin
+  static_files: dist/frontBranch/index.html
+  upload: dist/frontBranch/index.html
+
+- url: /passwordRecovery
+  static_files: dist/frontBranch/index.html
+  upload: dist/frontBranch/index.html
+
+- url: /home
+  static_files: dist/frontBranch/index.html
+  upload: dist/frontBranch/index.html
+
+- url: /make-a-post
+  static_files: dist/frontBranch/index.html
+  upload: dist/frontBranch/index.html
+
+- url: /list-of-users
+  static_files: dist/frontBranch/index.html
+  upload: dist/frontBranch/index.html
+
+- url: /(.*)
+  static_files: dist/frontBranch/\1
+  upload: dist/frontBranch/(.*)

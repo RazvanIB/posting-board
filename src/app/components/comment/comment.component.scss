@@ -1,0 +1,38 @@
+@import '../../styles/colors.scss';
+
+.comment {
+    padding: 10px;
+
+    .username {
+        color: $black;
+        background-color: $almost-white;
+        padding: 10px;
+        margin: 0;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .message {
+        color: $black;
+        background-color: $olive;
+        padding: 10px;
+        margin: 0;
+        border-radius: 0 0 5px 5px;
+    }
+
+    .comment-first-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 5px 5px 0 0;
+        background-color: $almost-white;
+    }
+
+    .icon {
+        color: $black;
+        margin: 15px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

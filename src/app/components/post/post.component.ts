@@ -1,3 +1,4 @@
+import { IComment } from './../../models/comment';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 
@@ -15,6 +16,12 @@ export class PostComponent implements OnInit {
 
   @Input() posts: IPost[];
   public analyzedPosts: number[] = [];
+  public postCommentsToShow: IComment[] = [];
+
+  public commentAuthor: string = null;
+  public commentContent: string = null;
+  public currentPostId: number = null;
+  public comment: IComment = null;
   
   public translatedPost: any;
   public selected: any;
@@ -53,6 +60,29 @@ export class PostComponent implements OnInit {
       this.showDeleteButton = false;
     }
 
+  }
+
+  public onCommentUpload(post: IPost) {
+    this.commentAuthor = sessionStorage.getItem("username_requested");
+    console.log(post.id)
+    console.log(this.commentAuthor);
+    console.log(this.commentContent);
+
+    this.postsService.createNewComment(post.id, sessionStorage.getItem("username_requested"),
+    sessionStorage.getItem("username"), this.commentContent).subscribe(res => {
+      this.postCommentsToShow.push({
+        author: sessionStorage.getItem("username"),
+        description: this.commentContent
+      })
+      console.log(res);
+    })
+  }
+
+  public loadComments(post: IPost) {
+    this.postCommentsToShow = [];
+    this.postsService.getCommentsByUsernameAndPostId(sessionStorage.getItem("username_requested"), post.id).subscribe(res => {
+      this.postCommentsToShow = res['comments'];
+    })
   }
 
   public translate(postId: number) {

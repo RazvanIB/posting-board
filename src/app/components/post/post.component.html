@@ -1,5 +1,5 @@
 <mat-expansion-panel *ngFor="let post of posts">
-    <mat-expansion-panel-header>
+    <mat-expansion-panel-header (click)="loadComments(post)">
       <div class="expansion-panel__icon" (click)="$event.stopPropagation(); deletePost(post.id)" *ngIf="showDeleteButton">
           <i class="icon ion-md-trash"></i>
       </div>
@@ -28,12 +28,19 @@
           {{ post.description }}
       </div>
 
+      <div class="comments_textfield">
+          <h1>Comments</h1>
+          <app-comment [comments]="postCommentsToShow" [post]="post"></app-comment>
+          <textarea matinput placeholder="Content" name="commentContent" [(ngModel)]="commentContent"></textarea>
+          <button mat-button (click)="onCommentUpload(post)">Post!</button>
+        </div>
+
       <div *ngIf="showAnalysis">
         <p>ANALYSIS IS AS FOLLOWING:</p>
         <p>TITLE: {{ analysis.title }}</p>
         <p>DESCRIPTION: {{ analysis.description }}</p>
         <p>IMAGE ANALYSIS - POSSIBLE LANDMARKS: - {{ analysis.image.landmarks }}</p>
-
       </div>
+      
     </ng-template>
   </mat-expansion-panel>
